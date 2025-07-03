@@ -22,14 +22,6 @@ public class ApiRequests {
             .addFilter(new ErrorLoggingFilter())
             .build();
 
-    @Step("Отправить GET запрос /api/ingredients")
-    public static Response sendRequestGetIngredients() {
-        return given()
-                .spec(SPEC)
-                .get("/api/ingredients")
-                .thenReturn();
-    }
-
     @Step("Отправить POST запрос /api/auth/register")
     public static Response sendPostRequestCreateUser(User user) {
         return given()

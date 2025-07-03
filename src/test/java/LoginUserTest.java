@@ -11,7 +11,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class LoginUserTest {
 
@@ -47,9 +46,9 @@ public class LoginUserTest {
                         "Неверное значение поля name!"),
                 () -> assertNull(respUser2.getUser().getPassword(),
                         "Заполнено поле password!"),
-                () -> assertNotNull(respUser2.getAccessToken(), //TODO почему другой у авторизации?
+                () -> assertNotNull(respUser2.getAccessToken(),
                         "Не заполнено поле accessToken!"),
-                () -> assertNotNull(respUser2.getRefreshToken(), //TODO почему другой у авторизации?
+                () -> assertNotNull(respUser2.getRefreshToken(),
                         "Не заполнено поле refreshToken!")
         );
     }

@@ -4,8 +4,7 @@ import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import model.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ApiSteps {
 
@@ -37,13 +36,14 @@ public class ApiSteps {
     }
 
     @Step("Удаление пользователя")
-    public static boolean deleteUser(String accessToken) {
+    public static void deleteUser(String accessToken) {
         Response response = ApiRequests.sendPostRequestDeleteUser(accessToken);
         response.then().statusCode(202);
         Resp resp = response.body().as(Resp.class);
-        assertTrue(resp.isSuccess());
-        assertEquals("User successfully removed", resp.getMessage());
-        return resp.isSuccess();
+        assertAll("Проверка полей ответа",
+                () -> assertTrue(resp.isSuccess()),
+                () -> assertEquals("User successfully removed", resp.getMessage())
+        );
     }
 
     @Step("Создание заказа")

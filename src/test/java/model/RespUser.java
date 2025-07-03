@@ -2,7 +2,6 @@ package model;
 
 import lombok.Data;
 
-//Тело ответа сервера при успешной регистрации/авторизации
 @Data
 public class RespUser {
     private boolean success;
